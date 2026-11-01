@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sample-switch-off-lights",
+    "title": "Turn off lights in unused rooms",
+    "category": "Lighting",
+    "description": "A starter example about noticing lighting that is not needed.",
+    "recommendation": "Consider switching off lights when a room is unoccupied, where safe and appropriate.",
+    "impact": "Potential savings depend on the lamp, operating hours, and household behavior; verify before quantifying."
+  },
+  {
+    "id": "sample-check-appliance-label",
+    "title": "Check appliance energy information",
+    "category": "Appliances",
+    "description": "A starter example encouraging people to inspect information for their own appliance.",
+    "recommendation": "Refer to the appliance label and manufacturer guidance when estimating its energy use.",
+    "impact": "This improves the quality of an estimate; it does not guarantee a particular reduction."
+  },
+  {
+    "id": "sample-use-daylight",
+    "title": "Make use of daylight",
+    "category": "Lighting",
+    "description": "A starter example about considering daylight before using electric lighting.",
+    "recommendation": "Where practical, use available daylight while maintaining comfort, privacy, and safety.",
+    "impact": "Any change depends on the room, season, and lighting habits; no savings amount is asserted."
+  }
+]

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore example household appliances and their illustrative power ratings.">
+  <title>Appliance guide | WattWise</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/appliances.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/appliance-data.js" defer></script>
+  <script src="../js/appliance-filter.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html">WattWise</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span></button>
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
+          <li><a href="appliances.html" aria-current="page">Appliances</a></li>
+          <li><a href="energy-tips.html">Energy tips</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content" class="container page-content">
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow">Page template</p>
+      <h1 id="page-title">Appliance guide</h1>
+      <p>Use the static dataset as a starting point for an appliance directory. Ratings are illustrative only; verify them against reliable, relevant sources before presenting them as authoritative.</p>
+    </section>
+    <section class="content-section" aria-labelledby="data-title">
+      <h2 id="data-title">Starter data</h2>
+      <p>Sample records are stored in <code>data/appliances.json</code>. The data loader and future search/filter behavior have separate responsibilities in <code>js/appliance-data.js</code> and <code>js/appliance-filter.js</code>.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container"><p>Appliance ratings vary by model, settings, and use.</p></div></footer>
+</body>
+</html>

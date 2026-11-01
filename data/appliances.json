@@ -1,0 +1,29 @@
+[
+  {
+    "id": "sample-led-bulb",
+    "name": "LED light bulb",
+    "category": "Lighting",
+    "typicalPowerWatts": 9,
+    "description": "Illustrative example of a household LED bulb.",
+    "image": "",
+    "usageNotes": "Actual power varies by product and brightness. Check the product label or manufacturer documentation."
+  },
+  {
+    "id": "sample-electric-fan",
+    "name": "Electric fan",
+    "category": "Cooling",
+    "typicalPowerWatts": 50,
+    "description": "Illustrative example of a household electric fan.",
+    "image": "",
+    "usageNotes": "Actual power depends on fan type and selected speed. Verify the rating for the specific model."
+  },
+  {
+    "id": "sample-refrigerator",
+    "name": "Refrigerator",
+    "category": "Kitchen",
+    "typicalPowerWatts": 150,
+    "description": "Illustrative example of a refrigerator's rated input power.",
+    "image": "",
+    "usageNotes": "A single rated-wattage figure does not represent cycling energy use; use measured or manufacturer consumption data when possible."
+  }
+]

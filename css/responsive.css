@@ -1,0 +1,42 @@
+/* Shared responsive adjustments; page-specific exceptions belong with page styles. */
+@media (max-width: 48rem) {
+  .header-inner {
+    position: relative;
+    flex-wrap: wrap;
+    padding-block: 0.75rem;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    display: none;
+    flex-basis: 100%;
+  }
+
+  .site-nav.is-open {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-block: 0.5rem;
+  }
+
+  .site-nav a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 30rem) {
+  .container {
+    width: min(100% - 1.25rem, var(--content-width));
+  }
+
+  .button-row,
+  .button-row .button {
+    width: 100%;
+  }
+}
