@@ -1,1 +1,168 @@
-/* Energy tips page-specific styles. Add tip-card and category-filter styles here. */
+.tips-section {
+  margin-top: 3rem;
+}
+
+.tips-heading {
+  margin-bottom: 1.3rem;
+}
+
+.tips-filters {
+  display: grid;
+  grid-template-columns: minmax(13rem, 1.5fr) minmax(10rem, 0.8fr) auto;
+  align-items: end;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  background: #fff;
+}
+
+.tips-filters .form-field label {
+  font-size: 0.78rem;
+}
+
+.tips-filters .form-field input,
+.tips-filters .form-field select,
+.tips-filters > .button {
+  min-height: 2.8rem;
+  font-size: 0.84rem;
+}
+
+.tips-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.tip-item {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  background: #fff;
+  box-shadow: 0 6px 18px rgb(22 54 39 / 3%);
+}
+
+.tip-item summary {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr) auto 1.3rem;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.05rem 1.2rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.tip-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.tip-icon {
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: #eff8f2;
+  color: var(--color-brand-dark);
+  font-size: 1.2rem;
+}
+
+.tip-summary-text {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.tip-summary-text strong {
+  font-size: 0.98rem;
+  letter-spacing: -0.015em;
+}
+
+.tip-summary-text small {
+  color: var(--color-muted);
+  font-size: 0.73rem;
+}
+
+.tip-chevron {
+  color: var(--color-brand-dark);
+  font-size: 1.1rem;
+  transition: transform 150ms ease;
+}
+
+.tip-item[open] .tip-chevron {
+  transform: rotate(180deg);
+}
+
+.tip-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+  padding: 0 1.2rem 1.25rem 4.65rem;
+}
+
+.tip-content h3 {
+  margin-bottom: 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0;
+}
+
+.tip-content p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.tips-reminder {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-top: 2.5rem;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid #d6e8dc;
+  border-radius: 0.9rem;
+  background: #eff8f2;
+}
+
+.tips-reminder > span {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.65rem;
+  background: #fff;
+  color: var(--color-brand);
+}
+
+.tips-reminder h2 {
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.tips-reminder p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+@media (max-width: 42rem) {
+  .tips-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .tip-item summary {
+    grid-template-columns: 2.5rem minmax(0, 1fr) 1rem;
+    gap: 0.65rem;
+    padding: 0.9rem;
+  }
+
+  .tip-item summary > .category-pill {
+    display: none;
+  }
+
+  .tip-content {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    padding: 0 1rem 1rem 4rem;
+  }
+}

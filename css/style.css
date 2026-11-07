@@ -1,18 +1,19 @@
-/* Global reset, typography, colors, and base element styles. */
 :root {
   color-scheme: light;
-  --color-ink: #17323b;
-  --color-muted: #52666d;
-  --color-brand: #176b58;
-  --color-brand-dark: #104c40;
-  --color-accent: #f2c14e;
-  --color-surface: #ffffff;
-  --color-page: #f4f8f6;
-  --color-border: #d5e0dc;
-  --font-body: "Segoe UI", Arial, sans-serif;
-  --font-heading: "Segoe UI", Arial, sans-serif;
-  --content-width: 70rem;
-  --space-unit: 1rem;
+  --color-ink: #1e293b;
+  --color-muted: #5d6b69;
+  --color-brand: #147a4c;
+  --color-brand-dark: #105c3b;
+  --color-accent: #f4c95d;
+  --color-surface: #fff;
+  --color-page: #f7faf8;
+  --color-border: #e2e8e5;
+  --color-mint: #e9f7ef;
+  --font-body: "DM Sans", "Segoe UI", Arial, sans-serif;
+  --font-heading: "DM Sans", "Segoe UI", Arial, sans-serif;
+  --content-width: 74rem;
+  --radius-card: 1rem;
+  --shadow-card: 0 12px 32px rgb(22 54 39 / 6%);
 }
 
 *,
@@ -31,7 +32,20 @@ body {
   background: var(--color-page);
   color: var(--color-ink);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
 }
 
 h1,
@@ -39,16 +53,31 @@ h2,
 h3 {
   color: var(--color-ink);
   font-family: var(--font-heading);
-  line-height: 1.2;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
 }
 
 h1 {
-  max-width: 18ch;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  max-width: 17ch;
+  margin-bottom: 1.15rem;
+  font-size: clamp(2.35rem, 5vw, 4.1rem);
+  font-weight: 750;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.9rem;
+  font-size: clamp(1.7rem, 3.2vw, 2.45rem);
+  font-weight: 720;
+}
+
+h3 {
+  margin-bottom: 0.55rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 1rem;
 }
 
 a {
@@ -72,19 +101,54 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--color-brand-dark);
   outline-offset: 3px;
 }
 
-code {
-  padding: 0.1em 0.3em;
-  border-radius: 0.25rem;
-  background: #e8efec;
-  font-family: Consolas, "Courier New", monospace;
+::selection {
+  background: #d7f0e2;
+  color: var(--color-brand-dark);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+  color: var(--color-brand-dark);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.eyebrow-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-brand);
+  box-shadow: 0 0 0 0.25rem #d9f0e3;
+}
+
+.unit {
+  color: var(--color-muted);
+  font-size: 0.88em;
+  font-weight: 500;
+}
+
+.optional {
+  color: var(--color-muted);
+  font-size: 0.88em;
+  font-weight: 500;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

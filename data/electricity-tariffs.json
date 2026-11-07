@@ -1,0 +1,108 @@
+{
+  "country": "Sri Lanka",
+  "currency": "LKR",
+  "consumerCategory": "Domestic",
+  "tariffType": "Standard block tariff",
+  "effectiveDate": "2026-05-11",
+  "effectiveDateLabel": "11 May 2026",
+  "billingCycleDays": 30,
+  "source": {
+    "organization": "Public Utilities Commission of Sri Lanka (PUCSL)",
+    "title": "Decision on Electricity Tariff – May 2026, Annex 2",
+    "url": "https://www.pucsl.gov.lk/wp-content/uploads/2026/05/Full-Final_Decision-on-Electricity-Tariffs-May-2026.pdf"
+  },
+  "calculationRules": {
+    "upTo60Kwh": {
+      "maximumConsumptionKwh": 60,
+      "energyBlocks": [
+        {
+          "label": "0–30 kWh",
+          "fromKwh": 0,
+          "toKwh": 30,
+          "rateLkrPerKwh": 5
+        },
+        {
+          "label": "31–60 kWh",
+          "fromKwh": 30,
+          "toKwh": 60,
+          "rateLkrPerKwh": 9
+        }
+      ],
+      "fixedChargeBands": [
+        {
+          "label": "0–30 kWh",
+          "minimumExclusiveKwh": -1,
+          "maximumInclusiveKwh": 30,
+          "fixedChargeLkr": 80
+        },
+        {
+          "label": "31–60 kWh",
+          "minimumExclusiveKwh": 30,
+          "maximumInclusiveKwh": 60,
+          "fixedChargeLkr": 210
+        }
+      ]
+    },
+    "above60Kwh": {
+      "energyBlocks": [
+        {
+          "label": "First 60 kWh",
+          "fromKwh": 0,
+          "toKwh": 60,
+          "rateLkrPerKwh": 14
+        },
+        {
+          "label": "61–90 kWh",
+          "fromKwh": 60,
+          "toKwh": 90,
+          "rateLkrPerKwh": 20
+        },
+        {
+          "label": "91–120 kWh",
+          "fromKwh": 90,
+          "toKwh": 120,
+          "rateLkrPerKwh": 28
+        },
+        {
+          "label": "121–180 kWh",
+          "fromKwh": 120,
+          "toKwh": 180,
+          "rateLkrPerKwh": 44
+        }
+      ],
+      "fixedChargeBands": [
+        {
+          "label": "61–90 kWh",
+          "minimumExclusiveKwh": 60,
+          "maximumInclusiveKwh": 90,
+          "fixedChargeLkr": 400
+        },
+        {
+          "label": "91–120 kWh",
+          "minimumExclusiveKwh": 90,
+          "maximumInclusiveKwh": 120,
+          "fixedChargeLkr": 1000
+        },
+        {
+          "label": "121–180 kWh",
+          "minimumExclusiveKwh": 120,
+          "maximumInclusiveKwh": 180,
+          "fixedChargeLkr": 1500
+        },
+        {
+          "label": "Above 180 kWh",
+          "minimumExclusiveKwh": 180,
+          "maximumInclusiveKwh": null,
+          "fixedChargeLkr": 2500
+        }
+      ],
+      "specialAbove180Kwh": {
+        "thresholdKwh": 180,
+        "baseBlockLabel": "0–180 kWh (above-180 tariff)",
+        "baseRateLkrPerKwh": 32.5,
+        "excessBlockLabel": "Above 180 kWh",
+        "excessRateLkrPerKwh": 100
+      }
+    }
+  }
+}

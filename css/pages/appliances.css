@@ -1,1 +1,208 @@
-/* Appliance directory-specific styles. Add card, filter, and empty-state styles here. */
+.catalogue-heading,
+.tips-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.catalogue-heading .eyebrow,
+.tips-heading .eyebrow {
+  margin-bottom: 0.45rem;
+}
+
+.catalogue-heading h2,
+.tips-heading h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.catalogue-count,
+.tips-count {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.83rem;
+}
+
+.filter-panel {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1.4fr) minmax(9rem, 0.8fr) minmax(12rem, 1fr) auto;
+  align-items: end;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  background: #fff;
+}
+
+.filter-panel .form-field {
+  min-width: 0;
+}
+
+.filter-panel .form-field label {
+  font-size: 0.78rem;
+}
+
+.filter-panel .form-field input,
+.filter-panel .form-field select {
+  min-height: 2.8rem;
+  padding-block: 0.55rem;
+  font-size: 0.84rem;
+}
+
+.filter-clear {
+  min-height: 2.8rem;
+  padding-inline: 0.8rem;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.data-caveat {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 1rem 0 1.4rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #f1e4b7;
+  border-radius: 0.65rem;
+  background: #fffbef;
+  color: #675a31;
+  font-size: 0.81rem;
+}
+
+.data-caveat > span {
+  color: #94751e;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.appliance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.appliance-card {
+  display: flex;
+  min-height: 17.5rem;
+  flex-direction: column;
+  padding: 1.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.9rem;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.appliance-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.appliance-icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.85rem;
+  background: #eff8f2;
+  color: var(--color-brand-dark);
+  font-size: 1.45rem;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.23rem 0.55rem;
+  border-radius: 1rem;
+  background: #f0f5f1;
+  color: #52635a;
+  font-size: 0.68rem;
+  font-weight: 750;
+}
+
+.appliance-card h3 {
+  margin-bottom: 0.45rem;
+  font-size: 1.1rem;
+}
+
+.appliance-card > p {
+  margin-bottom: 1rem;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.power-example {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-top: auto;
+  color: var(--color-brand-dark);
+}
+
+.power-example strong {
+  font-size: 1.2rem;
+  letter-spacing: -0.035em;
+}
+
+.power-example span {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.appliance-usage-note {
+  margin: 0.45rem 0 1rem !important;
+  font-size: 0.73rem !important;
+}
+
+.appliance-usage-example {
+  margin: 0.4rem 0 0 !important;
+  color: #43524f !important;
+  font-size: 0.75rem !important;
+  font-weight: 650;
+}
+
+.appliance-card .button {
+  min-height: 2.75rem;
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+}
+
+.appliance-empty {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 58rem) {
+  .filter-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .appliance-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 38rem) {
+  .filter-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .appliance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appliance-card {
+    min-height: auto;
+  }
+
+  .catalogue-heading,
+  .tips-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

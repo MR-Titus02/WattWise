@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore example household appliances and their illustrative power ratings.">
+  <meta name="description" content="Browse common Sri Lankan household appliances and approximate example power ratings. Search, filter, and estimate appliance use with WattWise.">
+  <meta property="og:title" content="Appliance guide | WattWise">
+  <meta property="og:description" content="Explore common home appliances and approximate wattage examples.">
   <title>Appliance guide | WattWise</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/pages/appliances.css">
-  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/responsive.css?v=2">
+  <link rel="stylesheet" href="../css/dark-theme.css?v=2" id="dark-theme-stylesheet" disabled>
   <script src="../js/utils.js" defer></script>
   <script src="../js/navigation.js" defer></script>
+  <script src="../js/theme-toggle.js" defer></script>
   <script src="../js/appliance-data.js" defer></script>
   <script src="../js/appliance-filter.js" defer></script>
   <script src="../js/main.js" defer></script>
@@ -19,30 +23,36 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html">WattWise</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span></button>
-      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="appliances.html" aria-current="page">Appliances</a></li>
-          <li><a href="energy-tips.html">Energy tips</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
+      <a class="brand" href="../index.html" aria-label="WattWise home"><span class="brand-mark" aria-hidden="true">W</span>WattWise</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark theme</span></button>
+      <span class="theme-toggle-status visually-hidden" role="status" aria-live="polite"></span>
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation"><ul>
+        <li><a href="../index.html">Home</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="appliances.html" aria-current="page">Appliances</a></li><li><a href="energy-tips.html">Energy tips</a></li><li><a href="about.html">About</a></li>
+      </ul></nav>
+      <a class="button header-cta" href="calculator.html">Calculate usage <span aria-hidden="true">→</span></a>
     </div>
   </header>
-  <main id="main-content" class="container page-content">
-    <section class="page-intro" aria-labelledby="page-title">
-      <p class="eyebrow">Page template</p>
-      <h1 id="page-title">Appliance guide</h1>
-      <p>Use the static dataset as a starting point for an appliance directory. Ratings are illustrative only; verify them against reliable, relevant sources before presenting them as authoritative.</p>
-    </section>
-    <section class="content-section" aria-labelledby="data-title">
-      <h2 id="data-title">Starter data</h2>
-      <p>Sample records are stored in <code>data/appliances.json</code>. The data loader and future search/filter behavior have separate responsibilities in <code>js/appliance-data.js</code> and <code>js/appliance-filter.js</code>.</p>
+  <main id="main-content" class="container page-content appliances-page">
+    <section class="page-intro" aria-labelledby="page-title"><p class="eyebrow">Everyday appliances, explained</p><h1 id="page-title">Appliance guide</h1><p>Explore common appliances found in Sri Lankan homes. Wattage examples are approximate starting points, not exact measurements—check your own appliance label or manufacturer information.</p></section>
+    <section class="catalogue-section" aria-labelledby="catalogue-title">
+      <div class="catalogue-heading"><div><p class="eyebrow">Find what you use at home</p><h2 id="catalogue-title">Browse appliances</h2></div><p class="catalogue-count" id="appliance-count" role="status" aria-live="polite"></p></div>
+      <form class="filter-panel" id="appliance-filters" role="search">
+        <div class="form-field search-field"><label for="appliance-search">Search appliances</label><input id="appliance-search" type="search" placeholder="Try “fan” or “rice cooker”" autocomplete="off"></div>
+        <div class="form-field"><label for="category-filter">Category</label><select id="category-filter"><option value="">All categories</option></select></div>
+        <div class="form-field"><label for="sort-filter">Sort by</label><select id="sort-filter"><option value="name">Name (A–Z)</option><option value="power-asc">Example power (low to high)</option><option value="power-desc">Example power (high to low)</option></select></div>
+        <button class="button button-secondary filter-clear" type="reset">Clear filters</button>
+      </form>
+      <p class="data-caveat"><span aria-hidden="true">ⓘ</span> The example wattages below are illustrative and can vary by model, size, age, settings, and manufacturer. A refrigerator's rated input is not the same as its daily energy use.</p>
+      <div class="appliance-grid" id="appliance-grid" aria-live="polite"></div>
+      <div class="empty-state" id="appliance-empty" hidden><span aria-hidden="true">⌕</span><h3>No appliances found</h3><p>Try another search or clear your filters.</p></div>
+      <p class="load-error" id="appliance-error" role="alert" hidden>We couldn't load the appliance examples. Please check the page is opened through a local or hosted web server, then try again.</p>
     </section>
   </main>
-  <footer class="site-footer"><div class="container"><p>Appliance ratings vary by model, settings, and use.</p></div></footer>
+  <footer class="site-footer"><div class="container footer-main">
+    <div class="footer-brand"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span>WattWise</a><p>A community-focused learning project for understanding household electricity use in Sri Lanka.</p></div>
+    <div class="footer-links"><h2>Explore</h2><a href="../index.html">Home</a><a href="calculator.html">Calculator</a><a href="energy-tips.html">Energy tips</a><a href="about.html">About WattWise</a></div>
+    <div class="footer-disclaimer"><h2>Use your own appliance rating</h2><p>Examples are illustrative only. Check your product label or manufacturer information for a more accurate rating.</p></div>
+  </div><div class="container footer-bottom"><span>IS 1106 · Foundations of Web Technologies</span><span>© <span data-current-year>2026</span> WattWise student project</span></div></footer>
 </body>
 </html>

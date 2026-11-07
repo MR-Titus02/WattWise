@@ -1,26 +1,128 @@
 [
   {
-    "id": "sample-switch-off-lights",
-    "title": "Turn off lights in unused rooms",
-    "category": "Lighting",
-    "description": "A starter example about noticing lighting that is not needed.",
-    "recommendation": "Consider switching off lights when a room is unoccupied, where safe and appropriate.",
-    "impact": "Potential savings depend on the lamp, operating hours, and household behavior; verify before quantifying."
-  },
-  {
-    "id": "sample-check-appliance-label",
-    "title": "Check appliance energy information",
-    "category": "Appliances",
-    "description": "A starter example encouraging people to inspect information for their own appliance.",
-    "recommendation": "Refer to the appliance label and manufacturer guidance when estimating its energy use.",
-    "impact": "This improves the quality of an estimate; it does not guarantee a particular reduction."
-  },
-  {
-    "id": "sample-use-daylight",
+    "id": "use-daylight",
     "title": "Make use of daylight",
     "category": "Lighting",
-    "description": "A starter example about considering daylight before using electric lighting.",
-    "recommendation": "Where practical, use available daylight while maintaining comfort, privacy, and safety.",
-    "impact": "Any change depends on the room, season, and lighting habits; no savings amount is asserted."
+    "icon": "☼",
+    "description": "When it suits the room and your routine, use available daylight before switching on electric lights.",
+    "recommendation": "Open curtains or use a well-lit area for daytime tasks where privacy, glare, and safety allow.",
+    "impact": "The effect depends on daylight, the room, and how the lights are used. No specific saving is guaranteed."
+  },
+  {
+    "id": "turn-off-lights",
+    "title": "Switch off lights you do not need",
+    "category": "Lighting",
+    "icon": "✦",
+    "description": "Notice when a light is left on in an empty room.",
+    "recommendation": "Consider switching off lights when a room is unoccupied, where safe and appropriate.",
+    "impact": "Any change depends on the lamp, its power rating, and how long it would otherwise be on."
+  },
+  {
+    "id": "check-led-label",
+    "title": "Compare lighting labels",
+    "category": "Lighting",
+    "icon": "◉",
+    "description": "Product labels help you compare lighting options for the brightness and fitting you need.",
+    "recommendation": "When replacing a bulb, check its packaging and follow the fitting manufacturer's guidance.",
+    "impact": "Suitability and energy use vary by product and room; compare the information on the products themselves."
+  },
+  {
+    "id": "fan-empty-room",
+    "title": "Switch off fans in empty rooms",
+    "category": "Cooling",
+    "icon": "⌁",
+    "description": "Fans circulate air for people in a room; they do not need to be on in an unoccupied space.",
+    "recommendation": "Turn off a fan when you leave a room if nobody else needs it.",
+    "impact": "The effect depends on the fan rating and the time it would otherwise run."
+  },
+  {
+    "id": "fan-comfort",
+    "title": "Choose a comfortable fan speed",
+    "category": "Cooling",
+    "icon": "✳",
+    "description": "A fan's speed setting can affect its power use and the airflow you experience.",
+    "recommendation": "Use a setting that feels comfortable, and follow the fan's instructions.",
+    "impact": "The result varies with fan design and setting; check the product information for your model."
+  },
+  {
+    "id": "air-conditioner-settings",
+    "title": "Use air-conditioning thoughtfully",
+    "category": "Cooling",
+    "icon": "❄",
+    "description": "Cooling needs differ between rooms, households, and weather conditions.",
+    "recommendation": "Choose a comfortable setting, close doors and windows while cooling, and follow the manufacturer's maintenance guidance.",
+    "impact": "There is no single setting or savings amount that suits every room or appliance."
+  },
+  {
+    "id": "fridge-door",
+    "title": "Close the refrigerator door promptly",
+    "category": "Kitchen",
+    "icon": "▯",
+    "description": "Keeping the refrigerator door closed helps it maintain its intended internal conditions.",
+    "recommendation": "Decide what you need before opening the door, then close it securely.",
+    "impact": "Appliance design, condition, and household use all affect energy consumption."
+  },
+  {
+    "id": "fridge-airflow",
+    "title": "Keep refrigerator vents clear",
+    "category": "Kitchen",
+    "icon": "▤",
+    "description": "Refrigerators need appropriate airflow around and inside the appliance.",
+    "recommendation": "Follow the manufacturer's instructions for spacing, cleaning, and safe storage.",
+    "impact": "Use the manual for your specific model; installation and maintenance needs vary."
+  },
+  {
+    "id": "kettle-water",
+    "title": "Boil the water you need",
+    "category": "Kitchen",
+    "icon": "♨",
+    "description": "The amount of water heated affects how long an electric kettle needs to run.",
+    "recommendation": "Use the kettle's minimum fill guidance and boil an appropriate amount for your needs.",
+    "impact": "The effect depends on the water volume, starting temperature, and kettle."
+  },
+  {
+    "id": "standby-habits",
+    "title": "Review standby habits",
+    "category": "Entertainment",
+    "icon": "▣",
+    "description": "Some devices continue to draw power while waiting in standby; behavior varies by product.",
+    "recommendation": "Check the device manual and consider switching off equipment at its power control when it is safe and practical.",
+    "impact": "Not every device uses power in the same way when off or on standby. Avoid switching off equipment that needs to remain powered."
+  },
+  {
+    "id": "washing-full-load",
+    "title": "Plan laundry loads",
+    "category": "Laundry",
+    "icon": "◉",
+    "description": "Washing machine programmes and load sizes are designed for particular amounts of laundry.",
+    "recommendation": "Follow the manual's load guidance and choose a suitable programme for the items being washed.",
+    "impact": "The best programme depends on the clothes, machine, and household needs; avoid overloading."
+  },
+  {
+    "id": "iron-planning",
+    "title": "Group ironing where practical",
+    "category": "Laundry",
+    "icon": "⌁",
+    "description": "Planning similar household tasks together may reduce repeated setup and warm-up time.",
+    "recommendation": "If it fits your routine, iron several items in one session and follow the appliance safety instructions.",
+    "impact": "Any difference depends on your iron, how often you use it, and your routine."
+  },
+  {
+    "id": "check-appliance-label",
+    "title": "Read appliance labels and manuals",
+    "category": "General household",
+    "icon": "▱",
+    "description": "A product's label or manual is more relevant to your home than a general example wattage.",
+    "recommendation": "Use the specific model's rating or manufacturer energy information when estimating appliance use.",
+    "impact": "A rating improves the input to an estimate; it does not make the result an exact bill."
+  },
+  {
+    "id": "unplug-unused",
+    "title": "Review appliances left switched on",
+    "category": "General household",
+    "icon": "⌂",
+    "description": "A quick check can help you notice equipment that does not need to stay on.",
+    "recommendation": "Switch off or unplug equipment only when the manufacturer says it is safe and it does not need to remain on.",
+    "impact": "Some devices must remain powered for safety, cooling, communications, or other functions; check before switching off."
   }
 ]

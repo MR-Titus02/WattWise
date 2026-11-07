@@ -1,29 +1,156 @@
 [
   {
-    "id": "sample-led-bulb",
-    "name": "LED light bulb",
-    "category": "Lighting",
-    "typicalPowerWatts": 9,
-    "description": "Illustrative example of a household LED bulb.",
-    "image": "",
-    "usageNotes": "Actual power varies by product and brightness. Check the product label or manufacturer documentation."
+    "id": "ceiling-fan",
+    "name": "Ceiling fan",
+    "category": "Cooling and ventilation",
+    "typicalPowerWatts": 75,
+    "powerRange": "50–80 W",
+    "icon": "⌁",
+    "description": "A common way to circulate air in living and sleeping spaces.",
+    "usageExample": "Illustrative scenario: one fan used for 8 hours a day.",
+    "usageNotes": "Illustrative example only. Fan type, size, and speed setting affect the appliance rating."
   },
   {
-    "id": "sample-electric-fan",
-    "name": "Electric fan",
-    "category": "Cooling",
-    "typicalPowerWatts": 50,
-    "description": "Illustrative example of a household electric fan.",
-    "image": "",
-    "usageNotes": "Actual power depends on fan type and selected speed. Verify the rating for the specific model."
+    "id": "standing-fan",
+    "name": "Standing fan",
+    "category": "Cooling and ventilation",
+    "typicalPowerWatts": 55,
+    "powerRange": "40–75 W",
+    "icon": "✳",
+    "description": "A portable fan that can be moved to the room where it is needed.",
+    "usageExample": "Illustrative scenario: one fan used for 8 hours a day.",
+    "usageNotes": "Illustrative example only. Check the label for your fan and selected speed."
   },
   {
-    "id": "sample-refrigerator",
+    "id": "air-conditioner",
+    "name": "Air conditioner",
+    "category": "Cooling and ventilation",
+    "typicalPowerWatts": 1200,
+    "powerRange": "700–2,000 W",
+    "icon": "❄",
+    "description": "A room cooling appliance; its power use depends on capacity, settings, and operating conditions.",
+    "usageExample": "Illustrative scenario: one unit used for 6 hours a day.",
+    "usageNotes": "Illustrative example only. Rated input and actual energy use vary; use manufacturer information for your model."
+  },
+  {
+    "id": "rice-cooker",
+    "name": "Rice cooker",
+    "category": "Kitchen",
+    "typicalPowerWatts": 700,
+    "powerRange": "300–1,000 W",
+    "icon": "◉",
+    "description": "An electric cooker used for preparing rice and keeping it warm.",
+    "usageExample": "Illustrative scenario: one hour of use per day.",
+    "usageNotes": "Illustrative example only. Cooking and keep-warm modes may use different power."
+  },
+  {
+    "id": "refrigerator",
     "name": "Refrigerator",
     "category": "Kitchen",
     "typicalPowerWatts": 150,
-    "description": "Illustrative example of a refrigerator's rated input power.",
-    "image": "",
-    "usageNotes": "A single rated-wattage figure does not represent cycling energy use; use measured or manufacturer consumption data when possible."
+    "powerRange": "100–400 W",
+    "icon": "▯",
+    "description": "A household appliance that cycles on and off to maintain its internal temperature.",
+    "usageExample": "Use manufacturer energy-use information; rated input is not continuous 24-hour use.",
+    "usageNotes": "Illustrative rated input only. This wattage does not describe the refrigerator's daily energy use."
+  },
+  {
+    "id": "electric-kettle",
+    "name": "Electric kettle",
+    "category": "Kitchen",
+    "typicalPowerWatts": 1800,
+    "powerRange": "1,000–2,200 W",
+    "icon": "♨",
+    "description": "A kettle used for boiling water for tea, cooking, and other household needs.",
+    "usageExample": "Illustrative scenario: about 18 minutes of total use per day.",
+    "usageNotes": "Illustrative example only. Check the label; use time is usually shorter than a full day."
+  },
+  {
+    "id": "microwave",
+    "name": "Microwave",
+    "category": "Kitchen",
+    "typicalPowerWatts": 1000,
+    "powerRange": "700–1,500 W",
+    "icon": "▦",
+    "description": "A kitchen appliance used for heating or cooking food.",
+    "usageExample": "Illustrative scenario: 30 minutes of total use per day.",
+    "usageNotes": "Illustrative input-power example only. Cooking output and electrical input are not the same rating."
+  },
+  {
+    "id": "television",
+    "name": "Television",
+    "category": "Entertainment",
+    "typicalPowerWatts": 100,
+    "powerRange": "40–200 W",
+    "icon": "▣",
+    "description": "A television for watching programmes, films, and other media.",
+    "usageExample": "Illustrative scenario: one television used for 4 hours a day.",
+    "usageNotes": "Illustrative example only. Screen size, display type, and settings change the rating."
+  },
+  {
+    "id": "desktop-computer",
+    "name": "Desktop computer",
+    "category": "Entertainment",
+    "typicalPowerWatts": 200,
+    "powerRange": "100–400 W",
+    "icon": "▤",
+    "description": "A desktop computer, typically used with a separate display and accessories.",
+    "usageExample": "Illustrative scenario: one computer used for 5 hours a day.",
+    "usageNotes": "Illustrative example only. Actual power varies by components and workload."
+  },
+  {
+    "id": "laptop",
+    "name": "Laptop",
+    "category": "Entertainment",
+    "typicalPowerWatts": 65,
+    "powerRange": "30–100 W",
+    "icon": "▱",
+    "description": "A portable computer often used for study, work, and entertainment.",
+    "usageExample": "Illustrative scenario: one laptop used for 6 hours a day.",
+    "usageNotes": "Illustrative example only. Check the adapter or manufacturer's specifications."
+  },
+  {
+    "id": "washing-machine",
+    "name": "Washing machine",
+    "category": "Household",
+    "typicalPowerWatts": 500,
+    "powerRange": "300–1,000 W",
+    "icon": "◉",
+    "description": "A household appliance for washing clothes in cycles.",
+    "usageExample": "Illustrative scenario: one hour of operation per day averaged over a month.",
+    "usageNotes": "Illustrative input-power example only. A cycle's energy depends on the programme and water heating."
+  },
+  {
+    "id": "iron",
+    "name": "Electric iron",
+    "category": "Household",
+    "typicalPowerWatts": 1000,
+    "powerRange": "700–1,500 W",
+    "icon": "⌁",
+    "description": "A household appliance used to press clothes.",
+    "usageExample": "Illustrative scenario: one hour of use per day.",
+    "usageNotes": "Illustrative example only. It cycles while heating; check the rating plate on your iron."
+  },
+  {
+    "id": "water-pump",
+    "name": "Water pump",
+    "category": "Household",
+    "typicalPowerWatts": 500,
+    "powerRange": "250–1,000 W",
+    "icon": "↟",
+    "description": "A pump used in some homes to move water to a storage tank or supply.",
+    "usageExample": "Illustrative scenario: one hour of operation per day.",
+    "usageNotes": "Illustrative example only. Pump type and capacity affect power; check your model's rating."
+  },
+  {
+    "id": "led-bulb",
+    "name": "LED bulb",
+    "category": "Lighting",
+    "typicalPowerWatts": 9,
+    "powerRange": "5–15 W",
+    "icon": "✦",
+    "description": "An electric light source commonly used in household rooms.",
+    "usageExample": "Illustrative scenario: one bulb used for 5 hours a day.",
+    "usageNotes": "Illustrative example only. Check the bulb packaging or product label for its wattage."
   }
 ]

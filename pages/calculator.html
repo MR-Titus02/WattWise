@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Estimate household appliance electricity consumption and cost with WattWise.">
+  <meta name="description" content="Estimate household appliance electricity use and a Sri Lankan domestic electricity bill using the PUCSL May 2026 standard block tariff.">
+  <meta property="og:title" content="Electricity calculator | WattWise">
+  <meta property="og:description" content="Estimate daily and monthly household electricity use and bill under the standard domestic block tariff.">
   <title>Electricity calculator | WattWise</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/pages/calculator.css">
-  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/responsive.css?v=2">
+  <link rel="stylesheet" href="../css/dark-theme.css?v=2" id="dark-theme-stylesheet" disabled>
   <script src="../js/utils.js" defer></script>
   <script src="../js/navigation.js" defer></script>
+  <script src="../js/theme-toggle.js" defer></script>
+  <script src="../js/appliance-data.js" defer></script>
   <script src="../js/calculator.js" defer></script>
   <script src="../js/main.js" defer></script>
 </head>
@@ -18,30 +23,116 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html">WattWise</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span></button>
-      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="calculator.html" aria-current="page">Calculator</a></li>
-          <li><a href="appliances.html">Appliances</a></li>
-          <li><a href="energy-tips.html">Energy tips</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
+      <a class="brand" href="../index.html" aria-label="WattWise home"><span class="brand-mark" aria-hidden="true">W</span>WattWise</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark theme</span></button>
+      <span class="theme-toggle-status visually-hidden" role="status" aria-live="polite"></span>
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation"><ul>
+        <li><a href="../index.html">Home</a></li><li><a href="calculator.html" aria-current="page">Calculator</a></li><li><a href="appliances.html">Appliances</a></li><li><a href="energy-tips.html">Energy tips</a></li><li><a href="about.html">About</a></li>
+      </ul></nav>
+      <a class="button header-cta" href="calculator.html">Calculate usage <span aria-hidden="true">→</span></a>
     </div>
   </header>
-  <main id="main-content" class="container page-content">
+  <main id="main-content" class="container page-content calculator-page">
     <section class="page-intro" aria-labelledby="page-title">
-      <p class="eyebrow">Page template</p>
+      <p class="eyebrow">A clearer picture of home energy</p>
       <h1 id="page-title">Electricity calculator</h1>
-      <p>Build an accessible calculator here. Decide how user inputs and tariff units should be presented before implementation; no tariff is assumed by this starter.</p>
+      <p>Build a household estimate from appliance power and hours of use. The bill estimate uses the published standard domestic tariff for a 30-day cycle; actual billing periods may be adjusted or prorated. Your appliance list stays in this browser.</p>
     </section>
-    <section class="content-section" aria-labelledby="implementation-title">
-      <h2 id="implementation-title">Implementation notes</h2>
-      <p>The reusable calculation function and its 30-day default are in <code>js/calculator.js</code>. Add labeled form controls, validation, and an explanation of estimates when developing this page.</p>
-    </section>
+    <div class="calculator-layout">
+      <section class="panel calculator-form-panel" aria-labelledby="add-appliance-title">
+        <div class="panel-heading"><span class="panel-step">01</span><div><h2 id="add-appliance-title">Add an appliance</h2><p>Use the rating printed on your appliance when available.</p></div></div>
+        <form id="appliance-form" novalidate>
+          <div class="form-field">
+            <label for="appliance-select">Choose a common appliance <span class="optional">(optional)</span></label>
+            <select id="appliance-select" name="catalogue">
+              <option value="">Choose an example or enter your own</option>
+              <option value="custom">Enter a custom appliance</option>
+            </select>
+            <span class="field-help">Selecting an example fills in an approximate starting wattage.</span>
+          </div>
+          <div class="form-field">
+            <label for="appliance-name">Appliance name</label>
+            <input id="appliance-name" name="name" type="text" maxlength="60" autocomplete="off" required aria-describedby="form-error">
+          </div>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="appliance-watts">Power rating <span class="unit">(W)</span></label>
+              <input id="appliance-watts" name="watts" type="number" min="0" max="100000" step="any" inputmode="decimal" required aria-describedby="watts-help form-error">
+              <span class="field-help" id="watts-help">Check the appliance label or product guide.</span>
+            </div>
+            <div class="form-field">
+              <label for="appliance-quantity">Number of appliances</label>
+              <input id="appliance-quantity" name="quantity" type="number" min="1" max="100" step="1" value="1" inputmode="numeric" required aria-describedby="form-error">
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="appliance-hours">Hours used each day</label>
+            <input id="appliance-hours" name="hours" type="number" min="0" max="24" step="any" inputmode="decimal" required aria-describedby="hours-help form-error">
+            <span class="field-help" id="hours-help">Enter an average from 0 to 24 hours per day.</span>
+          </div>
+          <p class="form-message" id="form-error" role="alert" aria-live="polite"></p>
+          <button class="button form-submit" type="submit"><span id="submit-label">Add to my household</span><span aria-hidden="true">+</span></button>
+          <button class="text-button cancel-edit" id="cancel-edit" type="button" hidden>Cancel editing</button>
+        </form>
+        <div class="privacy-note"><span aria-hidden="true">⌂</span><p>Your entries stay in this browser. You can remove saved entries at any time.</p></div>
+      </section>
+
+      <div class="calculator-results-column">
+        <section class="panel household-panel" aria-labelledby="household-title">
+          <div class="panel-heading panel-heading-between"><div class="panel-heading"><span class="panel-step">02</span><div><h2 id="household-title">Your household</h2><p id="entry-count">No appliances added yet</p></div></div>
+            <button type="button" class="text-button clear-button" id="clear-entries">Clear all</button>
+          </div>
+          <div class="household-empty" id="empty-state"><span class="empty-illustration" aria-hidden="true">＋</span><h3>Start with one appliance</h3><p>Add a fan, light, rice cooker, or any appliance you want to understand.</p></div>
+          <div class="appliance-list" id="appliance-list" aria-live="polite"></div>
+        </section>
+
+        <section class="panel results-panel" aria-labelledby="results-title">
+          <div class="panel-heading"><span class="panel-step">03</span><div><h2 id="results-title">Your estimate</h2><p>Based on the appliances listed above.</p></div></div>
+          <div class="summary-grid">
+            <article class="summary-card"><span>Monthly consumption</span><strong id="monthly-total">0.00 <small>kWh</small></strong><small>estimated for 30 days</small></article>
+            <article class="summary-card summary-card-highlight"><span>Estimated electricity bill</span><strong id="bill-total">Rs. 0.00</strong><small>standard domestic tariff</small></article>
+            <article class="summary-card"><span>Daily average</span><strong id="daily-total">0.00 <small>kWh</small></strong><small>estimated per day</small></article>
+            <article class="summary-card highest-summary-card"><span>Highest-consuming appliance</span><strong id="highest-appliance">—</strong><small id="highest-appliance-usage">Add appliances to compare</small></article>
+          </div>
+          <div class="tariff-category-panel" id="tariff-category-panel" aria-live="polite">
+            <div class="tariff-category-heading"><div><span class="tariff-category-label">Applicable consumption category</span><strong id="tariff-category">Loading tariff…</strong></div><span class="tariff-block-pill" id="reached-block">Tariff block</span></div>
+            <div class="tariff-progress-track" id="tariff-progress" role="progressbar" aria-label="Consumption progress within the current tariff block" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="tariff-progress-fill"></span></div>
+            <p class="tariff-progress-caption" id="tariff-progress-caption">The approved schedule uses a 30-day billing cycle.</p>
+            <p class="tariff-notice" id="tariff-notice" role="status" hidden></p>
+          </div>
+          <div class="bill-breakdown">
+            <div class="breakdown-header"><h3>Domestic tariff breakdown</h3><span>Energy charge by block</span></div>
+            <div class="tariff-table-wrap" role="region" aria-label="Domestic tariff block calculation" tabindex="0">
+              <table class="tariff-table">
+                <thead><tr><th scope="col">Tariff block</th><th scope="col">Units consumed</th><th scope="col">Rate</th><th scope="col">Charge</th></tr></thead>
+                <tbody id="tariff-breakdown"><tr><td colspan="4">Loading approved tariff…</td></tr></tbody>
+              </table>
+            </div>
+            <dl class="bill-totals">
+              <div><dt>Total energy charge</dt><dd id="energy-charge-total">Rs. 0.00</dd></div>
+              <div><dt>Fixed monthly charge</dt><dd id="fixed-charge-total">Rs. 0.00</dd></div>
+              <div class="bill-total-row"><dt>Estimated total bill</dt><dd id="bill-breakdown-total">Rs. 0.00</dd></div>
+            </dl>
+          </div>
+          <p class="bill-note">Your estimated bill is calculated using the published Sri Lankan domestic electricity tariff. Actual bills may differ due to billing-period adjustments, other applicable charges, meter readings, or tariff revisions.</p>
+          <div class="tariff-source" id="tariff-source">
+            <strong>Tariff source: <span id="tariff-source-name">Public Utilities Commission of Sri Lanka (PUCSL)</span></strong>
+            <span>Tariff effective date: <time id="tariff-effective-date" datetime="2026-05-11">11 May 2026</time></span>
+            <a id="tariff-source-link" href="https://www.pucsl.gov.lk/wp-content/uploads/2026/05/Full-Final_Decision-on-Electricity-Tariffs-May-2026.pdf" target="_blank" rel="noopener noreferrer">Read the official tariff decision <span class="visually-hidden">(opens in a new tab)</span></a>
+          </div>
+          <div class="breakdown-header appliance-breakdown-header"><h3>Appliance breakdown</h3><span>Estimated use over 30 days</span></div>
+          <div class="chart-list" id="consumption-chart" aria-label="Monthly electricity use by appliance"></div>
+          <p class="tariff-load-error" id="tariff-load-error" role="alert" hidden>The tariff configuration could not be loaded. The bill estimate is unavailable; your appliance energy calculations remain available. Try again when the data file is reachable.</p>
+          <p class="calculator-status" id="calculator-status" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </div>
   </main>
-  <footer class="site-footer"><div class="container"><p>WattWise estimates are educational and depend on accurate user inputs.</p></div></footer>
+  <footer class="site-footer"><div class="container footer-main">
+    <div class="footer-brand"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span>WattWise</a><p>A community-focused learning project for understanding household electricity use in Sri Lanka.</p></div>
+    <div class="footer-links"><h2>Explore</h2><a href="../index.html">Home</a><a href="appliances.html">Appliances</a><a href="energy-tips.html">Energy tips</a><a href="about.html">About WattWise</a></div>
+    <div class="footer-disclaimer"><h2>A helpful estimate, not a bill</h2><p>Results depend on your inputs. Actual bills may include tariff categories, consumption slabs, fixed charges, and other applicable charges.</p></div>
+  </div><div class="container footer-bottom"><span>IS 1106 · Foundations of Web Technologies</span><span>© <span data-current-year>2026</span> WattWise student project</span></div></footer>
 </body>
 </html>

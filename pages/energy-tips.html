@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore practical, source-backed ideas for household energy awareness.">
+  <meta name="description" content="Explore practical, non-quantified household electricity habits for Sri Lankan homes, with tips for lighting, cooling, kitchens, and more.">
+  <meta property="og:title" content="Energy-saving tips | WattWise">
+  <meta property="og:description" content="Simple household energy-use ideas, organized by room and routine.">
   <title>Energy-saving tips | WattWise</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/pages/tips.css">
-  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/responsive.css?v=2">
+  <link rel="stylesheet" href="../css/dark-theme.css?v=2" id="dark-theme-stylesheet" disabled>
   <script src="../js/utils.js" defer></script>
   <script src="../js/navigation.js" defer></script>
+  <script src="../js/theme-toggle.js" defer></script>
   <script src="../js/energy-tips.js" defer></script>
   <script src="../js/main.js" defer></script>
 </head>
@@ -18,30 +22,35 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html">WattWise</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span></button>
-      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="appliances.html">Appliances</a></li>
-          <li><a href="energy-tips.html" aria-current="page">Energy tips</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
+      <a class="brand" href="../index.html" aria-label="WattWise home"><span class="brand-mark" aria-hidden="true">W</span>WattWise</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark theme</span></button>
+      <span class="theme-toggle-status visually-hidden" role="status" aria-live="polite"></span>
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation"><ul>
+        <li><a href="../index.html">Home</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="appliances.html">Appliances</a></li><li><a href="energy-tips.html" aria-current="page">Energy tips</a></li><li><a href="about.html">About</a></li>
+      </ul></nav>
+      <a class="button header-cta" href="calculator.html">Calculate usage <span aria-hidden="true">→</span></a>
     </div>
   </header>
-  <main id="main-content" class="container page-content">
-    <section class="page-intro" aria-labelledby="page-title">
-      <p class="eyebrow">Page template</p>
-      <h1 id="page-title">Energy-saving tips</h1>
-      <p>Develop this page with practical, appropriately sourced recommendations. Starter entries are examples for development and must be checked before being treated as advice.</p>
+  <main id="main-content" class="container page-content tips-page">
+    <section class="page-intro" aria-labelledby="page-title"><p class="eyebrow">Ideas for everyday routines</p><h1 id="page-title">Small habits. Smarter energy use.</h1><p>Explore practical ideas for your home. What works depends on your appliances, household, comfort, and routine—there are no guaranteed savings amounts.</p></section>
+    <section class="tips-section" aria-labelledby="tips-title">
+      <div class="tips-heading"><div><p class="eyebrow">Choose a topic to get started</p><h2 id="tips-title">Everyday energy tips</h2></div><span class="tips-count" id="tips-count" role="status" aria-live="polite"></span></div>
+      <form class="tips-filters" id="tips-filters" role="search">
+        <div class="form-field tips-search"><label for="tips-search">Search tips</label><input id="tips-search" type="search" placeholder="Search a room, appliance, or habit" autocomplete="off"></div>
+        <div class="form-field"><label for="tips-category">Category</label><select id="tips-category"><option value="">All categories</option></select></div>
+        <button class="button button-secondary" type="reset">Clear filters</button>
+      </form>
+      <div class="tips-list" id="tips-list" aria-live="polite"></div>
+      <div class="empty-state" id="tips-empty" hidden><span aria-hidden="true">⌕</span><h3>No tips match that search</h3><p>Try a different word or clear your filters.</p></div>
+      <p class="load-error" id="tips-error" role="alert" hidden>We couldn't load the tips. Please check the page is opened through a local or hosted web server, then try again.</p>
     </section>
-    <section class="content-section" aria-labelledby="data-title">
-      <h2 id="data-title">Starter data</h2>
-      <p>Tip records live in <code>data/energy-tips.json</code>. Use <code>js/energy-tips.js</code> for loading and displaying data, and document evidence and limitations in <code>docs/references.md</code>.</p>
-    </section>
+    <aside class="tips-reminder"><span aria-hidden="true">✦</span><div><h2>Use what works for your home</h2><p>Keep comfort, safety, and the appliance manufacturer's instructions in mind. WattWise provides general educational ideas, not a promise of savings.</p></div></aside>
   </main>
-  <footer class="site-footer"><div class="container"><p>Recommendations should be reviewed for accuracy and local relevance.</p></div></footer>
+  <footer class="site-footer"><div class="container footer-main">
+    <div class="footer-brand"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span>WattWise</a><p>A community-focused learning project for understanding household electricity use in Sri Lanka.</p></div>
+    <div class="footer-links"><h2>Explore</h2><a href="../index.html">Home</a><a href="calculator.html">Calculator</a><a href="appliances.html">Appliances</a><a href="about.html">About WattWise</a></div>
+    <div class="footer-disclaimer"><h2>General educational ideas</h2><p>Consider manufacturer instructions and household needs. No specific savings are guaranteed or claimed.</p></div>
+  </div><div class="container footer-bottom"><span>IS 1106 · Foundations of Web Technologies</span><span>© <span data-current-year>2026</span> WattWise student project</span></div></footer>
 </body>
 </html>

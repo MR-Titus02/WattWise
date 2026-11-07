@@ -1,18 +1,41 @@
-/* Shared responsive adjustments; page-specific exceptions belong with page styles. */
-@media (max-width: 48rem) {
+@media (max-width: 64rem) {
+  .header-inner {
+    gap: 0.6rem;
+  }
+
+  .site-nav a {
+    padding-inline: 0.5rem;
+    font-size: 0.84rem;
+  }
+
+  .header-cta {
+    padding-inline: 0.7rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 52rem) {
   .header-inner {
     position: relative;
+    min-height: 4.5rem;
     flex-wrap: wrap;
-    padding-block: 0.75rem;
+    justify-content: space-between;
+    padding-block: 0.65rem;
   }
 
   .menu-toggle {
     display: inline-flex;
+    margin-left: auto;
+  }
+
+  .header-cta {
+    display: none;
   }
 
   .site-nav {
     display: none;
     flex-basis: 100%;
+    order: 4;
   }
 
   .site-nav.is-open {
@@ -20,23 +43,77 @@
   }
 
   .site-nav ul {
+    align-items: stretch;
     flex-direction: column;
     gap: 0.15rem;
-    padding-block: 0.5rem;
+    padding-block: 0.45rem 0.2rem;
   }
 
   .site-nav a {
     width: 100%;
+    min-height: 2.85rem;
+    padding-inline: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-disclaimer {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 40rem) {
   .container {
-    width: min(100% - 1.25rem, var(--content-width));
+    width: min(100% - 1.5rem, var(--content-width));
+  }
+
+  .theme-toggle {
+    width: 2.75rem;
+    padding-inline: 0;
+  }
+
+  .theme-toggle-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  .page-content {
+    padding-block: 2.5rem 3.5rem;
   }
 
   .button-row,
   .button-row .button {
     width: 100%;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .footer-disclaimer {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 0.9rem;
+  }
+}
+
+@media (max-width: 20rem) {
+  body {
+    min-width: 0;
   }
 }

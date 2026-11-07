@@ -3,44 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Learn about the WattWise university project and its team.">
-  <title>About WattWise</title>
+  <meta name="description" content="Learn about WattWise, a student-built educational project helping Sri Lankan households explore electricity consumption.">
+  <meta property="og:title" content="About WattWise">
+  <meta property="og:description" content="Our purpose, community value, technologies, and limitations.">
+  <title>About WattWise | Our purpose and project</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/pages/about.css">
-  <link rel="stylesheet" href="../css/responsive.css">
-  <script src="../js/utils.js" defer></script>
+  <link rel="stylesheet" href="../css/responsive.css?v=2">
+  <link rel="stylesheet" href="../css/dark-theme.css?v=2" id="dark-theme-stylesheet" disabled>
   <script src="../js/navigation.js" defer></script>
+  <script src="../js/theme-toggle.js" defer></script>
   <script src="../js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html">WattWise</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span></button>
-      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="appliances.html">Appliances</a></li>
-          <li><a href="energy-tips.html">Energy tips</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-        </ul>
-      </nav>
+      <a class="brand" href="../index.html" aria-label="WattWise home"><span class="brand-mark" aria-hidden="true">W</span>WattWise</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-toggle-label">Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label">Dark theme</span></button>
+      <span class="theme-toggle-status visually-hidden" role="status" aria-live="polite"></span>
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation"><ul>
+        <li><a href="../index.html">Home</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="appliances.html">Appliances</a></li><li><a href="energy-tips.html">Energy tips</a></li><li><a href="about.html" aria-current="page">About</a></li>
+      </ul></nav>
+      <a class="button header-cta" href="calculator.html">Calculate usage <span aria-hidden="true">→</span></a>
     </div>
   </header>
-  <main id="main-content" class="container page-content">
-    <section class="page-intro" aria-labelledby="page-title">
-      <p class="eyebrow">University group project</p>
-      <h1 id="page-title">About WattWise</h1>
-      <p>WattWise is an educational static website project exploring household electricity consumption and energy awareness.</p>
+  <main id="main-content" class="container page-content about-page">
+    <section class="page-intro about-intro" aria-labelledby="page-title"><p class="eyebrow">IS 1106 · Semester 1 group project</p><h1 id="page-title">Energy awareness starts with understanding.</h1><p>WattWise is a community-focused educational website that makes household electricity use easier to explore—one appliance and one everyday choice at a time.</p></section>
+    <section class="about-purpose" aria-labelledby="why-title"><div class="about-callout"><span aria-hidden="true">⌂</span><p class="eyebrow">Our purpose</p><h2 id="why-title">Make energy information approachable for everyone.</h2></div><div class="about-copy"><h2>Why WattWise?</h2><p>Many people use a range of electrical appliances without an easy way to connect a wattage label and daily hours of use to an energy estimate. WattWise explains that relationship in simple terms and offers a place to explore everyday appliance examples and household habits.</p><p>It is designed with Sri Lankan households in mind: costs are shown in LKR, examples feature familiar appliances, and no official electricity rate is assumed.</p></div></section>
+    <section class="about-benefits" aria-labelledby="community-title"><div class="section-heading"><p class="eyebrow">Learning that can be shared</p><h2 id="community-title">A useful starting point for the community.</h2><p>Understanding usage can support more informed conversations and choices at home. WattWise helps by:</p></div><ul class="benefit-list"><li><span aria-hidden="true">01</span><div><h3>Making calculations easier to follow</h3><p>Clear inputs and a simple formula explain how wattage and hours become kWh.</p></div></li><li><span aria-hidden="true">02</span><div><h3>Putting common appliances in context</h3><p>Approximate examples help people get started, while encouraging them to check their own labels.</p></div></li><li><span aria-hidden="true">03</span><div><h3>Sharing practical ideas</h3><p>Household tips invite people to consider everyday usage without promising a particular bill reduction.</p></div></li></ul></section>
+    <section class="team-section" aria-labelledby="team-title"><div class="section-heading"><p class="eyebrow">Built together</p><h2 id="team-title">The WattWise team</h2><p>Eight student contributors. Names are intentionally left blank until the group chooses what to publish.</p></div><ol class="team-grid">
+      <li><span class="team-avatar" aria-hidden="true">01</span><span class="team-name">Team member 1</span></li><li><span class="team-avatar" aria-hidden="true">02</span><span class="team-name">Team member 2</span></li><li><span class="team-avatar" aria-hidden="true">03</span><span class="team-name">Team member 3</span></li><li><span class="team-avatar" aria-hidden="true">04</span><span class="team-name">Team member 4</span></li><li><span class="team-avatar" aria-hidden="true">05</span><span class="team-name">Team member 5</span></li><li><span class="team-avatar" aria-hidden="true">06</span><span class="team-name">Team member 6</span></li><li><span class="team-avatar" aria-hidden="true">07</span><span class="team-name">Team member 7</span></li><li><span class="team-avatar" aria-hidden="true">08</span><span class="team-name">Team member 8</span></li>
+    </ol></section>
+    <section class="project-facts" aria-label="Project details">
+      <div><h2>Technologies</h2><p>HTML5 · CSS3 · Vanilla JavaScript · Static JSON · Browser LocalStorage</p></div>
+      <div><h2>Project limitations</h2><p>WattWise is educational, not an official electricity billing platform. It does not read meters, predict bills, or transmit personal data. Estimates depend on user inputs, appliance behavior, and the user's chosen rate.</p></div>
     </section>
-    <section class="content-section" aria-labelledby="team-title">
-      <h2 id="team-title">Project team</h2>
-      <p>Add the eight team members' approved names, roles, and contributions here. Confirm any privacy or course requirements before publishing personal information.</p>
-    </section>
+    <p class="about-disclaimer">WattWise is a student project for IS 1106 – Foundations of Web Technologies. Appliance ratings are approximate examples, tips are general ideas, and actual savings or bills may differ.</p>
   </main>
-  <footer class="site-footer"><div class="container"><p>WattWise is an academic project; estimates are not utility-billing advice.</p></div></footer>
+  <footer class="site-footer"><div class="container footer-main">
+    <div class="footer-brand"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span>WattWise</a><p>A community-focused learning project for understanding household electricity use in Sri Lanka.</p></div>
+    <div class="footer-links"><h2>Explore</h2><a href="../index.html">Home</a><a href="calculator.html">Calculator</a><a href="appliances.html">Appliances</a><a href="energy-tips.html">Energy tips</a></div>
+    <div class="footer-disclaimer"><h2>Educational project</h2><p>WattWise is not a utility or official billing platform. Estimates are for learning and comparison only.</p></div>
+  </div><div class="container footer-bottom"><span>IS 1106 · Foundations of Web Technologies</span><span>© <span data-current-year>2026</span> WattWise student project</span></div></footer>
 </body>
 </html>

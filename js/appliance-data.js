@@ -1,4 +1,4 @@
-/* Loads static appliance records from data/appliances.json. */
+/* Loads and checks the static appliance catalogue. */
 (function (global) {
   "use strict";
 
@@ -10,8 +10,14 @@
     }
 
     var records = await response.json();
-    if (!Array.isArray(records)) {
-      throw new TypeError("Appliance data must be a JSON array.");
+    if (!Array.isArray(records) || !records.every(function (record) {
+      return record && typeof record.id === "string" &&
+        typeof record.name === "string" && typeof record.category === "string" &&
+        Number.isFinite(record.typicalPowerWatts) && record.typicalPowerWatts >= 0 &&
+        typeof record.powerRange === "string" && typeof record.description === "string" &&
+        typeof record.usageExample === "string" && typeof record.usageNotes === "string";
+    })) {
+      throw new TypeError("Appliance data contains an invalid record.");
     }
 
     return records;

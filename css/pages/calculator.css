@@ -1,1 +1,628 @@
-/* Calculator page-specific styles. Add form and result states with the calculator UI. */
+.calculator-page .page-intro {
+  margin-bottom: 2rem;
+}
+
+.calculator-layout {
+  display: grid;
+  min-width: 0;
+  align-items: start;
+  grid-template-columns: minmax(17rem, 0.77fr) minmax(0, 1.23fr);
+  gap: 1.2rem;
+}
+
+.panel {
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.calculator-form-panel {
+  padding: 1.45rem;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.panel-heading h2 {
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.panel-heading p {
+  margin-bottom: 0;
+  color: var(--color-muted);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+.panel-step {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.65rem;
+  background: #e9f7ef;
+  color: var(--color-brand-dark);
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+#appliance-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 0.2rem;
+}
+
+.form-message {
+  min-height: 0;
+  margin: -0.2rem 0;
+  color: #a12e25;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+.form-message:empty {
+  display: none;
+}
+
+.privacy-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+  padding: 0.8rem;
+  border-radius: 0.65rem;
+  background: #f2f8f4;
+  color: var(--color-muted);
+}
+
+.privacy-note > span {
+  color: var(--color-brand-dark);
+}
+
+.privacy-note p {
+  margin: 0;
+  font-size: 0.77rem;
+  line-height: 1.45;
+}
+
+.calculator-results-column {
+  display: grid;
+  min-width: 0;
+  gap: 1.2rem;
+}
+
+.household-panel,
+.results-panel {
+  padding: 1.45rem;
+}
+
+.panel-heading-between {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-heading-between > .panel-heading {
+  align-items: flex-start;
+}
+
+.clear-button {
+  flex: 0 0 auto;
+}
+
+.household-empty {
+  display: grid;
+  justify-items: center;
+  padding: 2rem 1rem 1.3rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.empty-illustration {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  margin-bottom: 0.7rem;
+  border-radius: 50%;
+  background: #eef7f1;
+  color: var(--color-brand);
+  font-size: 1.65rem;
+}
+
+.household-empty h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.household-empty p {
+  max-width: 34ch;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.appliance-list {
+  display: grid;
+  margin-top: 1.15rem;
+}
+
+.appliance-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  padding-block: 0.9rem;
+  border-top: 1px solid #edf0ee;
+}
+
+.entry-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.entry-title-row h3 {
+  margin: 0;
+  font-size: 0.94rem;
+  letter-spacing: -0.01em;
+}
+
+.entry-quantity {
+  padding: 0.12rem 0.4rem;
+  border-radius: 1rem;
+  background: #f0f5f1;
+  color: #52635a;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.appliance-entry p {
+  margin: 0.25rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.entry-usage {
+  align-self: center;
+  color: var(--color-brand-dark);
+  font-size: 0.81rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.entry-actions {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 1rem;
+  margin-top: -0.25rem;
+}
+
+.entry-actions button {
+  min-height: 2.75rem;
+  padding: 0.2rem 0.15rem;
+  border: 0;
+  background: transparent;
+  color: #53625e;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.entry-actions button:last-child {
+  color: #a13d34;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 1.35rem;
+}
+
+.summary-card {
+  display: grid;
+  min-height: 6.6rem;
+  align-content: center;
+  gap: 0.25rem;
+  padding: 0.85rem;
+  border: 1px solid #e5ebe7;
+  border-radius: 0.7rem;
+  background: #fbfcfb;
+}
+
+.summary-card > span {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.summary-card strong {
+  color: var(--color-ink);
+  font-size: clamp(1.15rem, 2vw, 1.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.summary-card strong small {
+  font-size: 0.65rem;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.summary-card > small {
+  color: var(--color-muted);
+  font-size: 0.7rem;
+}
+
+.summary-card-highlight {
+  border-color: #cae7d4;
+  background: #eff9f2;
+}
+
+.summary-card-highlight strong {
+  color: var(--color-brand-dark);
+}
+
+.highest-summary-card strong {
+  overflow: hidden;
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bill-note {
+  margin: 1rem 0 1.2rem;
+  padding: 0.65rem 0.8rem;
+  border-left: 3px solid #e7bd47;
+  background: #fff9e8;
+  color: #64552c;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.tariff-category-panel {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #dcebe0;
+  border-radius: 0.75rem;
+  background: #f5faf6;
+}
+
+.tariff-category-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.tariff-category-heading > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.tariff-category-label {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.tariff-category-heading strong {
+  color: var(--color-brand-dark);
+  font-size: 0.97rem;
+}
+
+.tariff-block-pill {
+  padding: 0.3rem 0.55rem;
+  border-radius: 2rem;
+  background: #e4f2e8;
+  color: var(--color-brand-dark);
+  font-size: 0.7rem;
+  font-weight: 750;
+  text-align: center;
+}
+
+.tariff-progress-track {
+  height: 0.65rem;
+  overflow: hidden;
+  margin-top: 0.85rem;
+  border-radius: 2rem;
+  background: #e2ebe5;
+}
+
+.tariff-progress-track > span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-brand);
+  transition: width 180ms ease;
+}
+
+.tariff-progress-caption {
+  margin: 0.4rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.tariff-notice {
+  margin: 0.75rem 0 0;
+  padding: 0.65rem 0.75rem;
+  border-left: 3px solid #d6a11b;
+  background: #fff8e4;
+  color: #5e4d1f;
+  font-size: 0.77rem;
+}
+
+.tariff-notice-high {
+  border-left-color: #b64a32;
+  background: #fff0ec;
+  color: #7d3022;
+}
+
+.bill-breakdown {
+  margin-top: 1.4rem;
+}
+
+.breakdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.breakdown-header h3 {
+  margin: 0;
+  font-size: 0.96rem;
+  letter-spacing: 0;
+}
+
+.breakdown-header > span {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.tariff-table-wrap {
+  overflow-x: auto;
+  min-width: 0;
+  margin-top: 0.7rem;
+  border: 1px solid #e5ebe7;
+  border-radius: 0.65rem;
+}
+
+.tariff-table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.76rem;
+  text-align: right;
+}
+
+.tariff-table th,
+.tariff-table td {
+  padding: 0.65rem 0.7rem;
+  border-bottom: 1px solid #edf0ee;
+  white-space: nowrap;
+}
+
+.tariff-table thead th {
+  background: #f6f9f7;
+  color: #4a5953;
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+.tariff-table tr > :first-child {
+  text-align: left;
+}
+
+.tariff-table tbody th {
+  color: var(--color-ink);
+  font-weight: 650;
+}
+
+.tariff-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.tariff-table .current-tariff-block {
+  background: #eff8f2;
+}
+
+.tariff-table .current-tariff-block th {
+  color: var(--color-brand-dark);
+}
+
+.bill-totals {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #e5ebe7;
+  border-top: 0;
+  border-radius: 0 0 0.65rem 0.65rem;
+}
+
+.bill-totals > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.bill-totals dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.bill-total-row {
+  margin-inline: -0.8rem;
+  padding: 0.75rem 0.8rem !important;
+  border-top: 1px solid #dcebe0;
+  background: #f1f8f3;
+  color: var(--color-brand-dark);
+  font-weight: 800;
+}
+
+.tariff-source {
+  display: grid;
+  gap: 0.28rem;
+  margin: 1rem 0 1.6rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid #e2e8e5;
+  border-radius: 0.65rem;
+  background: #fbfcfb;
+  color: #52615b;
+  font-size: 0.75rem;
+}
+
+.tariff-source strong {
+  color: var(--color-ink);
+}
+
+.tariff-source a {
+  width: fit-content;
+  font-weight: 700;
+}
+
+.appliance-breakdown-header {
+  margin-top: 1.2rem;
+}
+
+.tariff-load-error {
+  margin-top: 0.8rem;
+  padding: 0.8rem;
+  border: 1px solid #efc8c2;
+  border-radius: 0.6rem;
+  background: #fff3f1;
+  color: #85352c;
+  font-size: 0.82rem;
+}
+
+.chart-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: minmax(6rem, 0.8fr) minmax(4rem, 1.7fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+}
+
+.chart-name {
+  overflow: hidden;
+  color: #43524f;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chart-track {
+  height: 0.55rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #edf1ee;
+}
+
+.chart-fill {
+  height: 100%;
+  min-width: 2px;
+  border-radius: inherit;
+  background: #168a58;
+}
+
+.chart-value {
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.calculator-status {
+  min-height: 0;
+  margin: 0;
+  color: var(--color-brand-dark);
+  font-size: 0.75rem;
+}
+
+.calculator-status:empty {
+  display: none;
+}
+
+.calculator-status.status-error {
+  color: #8f2f28;
+}
+
+@media (max-width: 58rem) {
+  .calculator-layout {
+    grid-template-columns: minmax(15rem, 0.85fr) minmax(0, 1.15fr);
+  }
+
+}
+
+@media (max-width: 48rem) {
+  .calculator-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 34rem) {
+  .calculator-form-panel,
+  .household-panel,
+  .results-panel {
+    padding: 1rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summary-card {
+    min-height: 5.8rem;
+    padding: 0.7rem;
+  }
+
+  .summary-card:last-child {
+    grid-column: auto;
+  }
+
+  .tariff-category-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .rate-input-wrap {
+    width: 100%;
+  }
+
+  .chart-row {
+    grid-template-columns: minmax(5rem, 0.8fr) minmax(3rem, 1fr) auto;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+  }
+}
