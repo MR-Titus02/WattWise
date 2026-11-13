@@ -25,8 +25,18 @@
       rel="stylesheet"
       href="css/dark-theme.css?v=2"
       id="dark-theme-stylesheet"
-      disabled
     />
+    <script>
+      (function () {
+        var darkStylesheet = document.getElementById("dark-theme-stylesheet");
+        try {
+          darkStylesheet.disabled =
+            window.localStorage.getItem("wattwise-theme") !== "dark";
+        } catch (error) {
+          darkStylesheet.disabled = true;
+        }
+      })();
+    </script>
     <script src="js/navigation.js" defer></script>
     <script src="js/theme-toggle.js" defer></script>
     <script src="js/main.js" defer></script>
