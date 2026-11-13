@@ -12,7 +12,8 @@
     }
 
     return new Intl.NumberFormat("en-LK", {
-      maximumFractionDigits: maximumFractionDigits === undefined ? 2 : maximumFractionDigits
+      maximumFractionDigits:
+        maximumFractionDigits === undefined ? 2 : maximumFractionDigits,
     }).format(value);
   }
 
@@ -21,15 +22,18 @@
       throw new TypeError("A finite amount is required for formatting.");
     }
 
-    return "Rs. " + new Intl.NumberFormat("en-LK", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(value);
+    return (
+      "Rs. " +
+      new Intl.NumberFormat("en-LK", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(value)
+    );
   }
 
   global.WattWiseUtils = Object.freeze({
     isFiniteNonNegativeNumber: isFiniteNonNegativeNumber,
     formatNumber: formatNumber,
-    formatRupees: formatRupees
+    formatRupees: formatRupees,
   });
-}(window));
+})(window);

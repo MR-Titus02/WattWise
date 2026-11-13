@@ -27,8 +27,13 @@
       var isDark = nextTheme === "dark";
       darkStylesheet.disabled = !isDark;
       toggle.setAttribute("aria-pressed", String(isDark));
-      toggle.setAttribute("aria-label", "Switch to " + (isDark ? "light" : "dark") + " theme");
-      toggle.querySelector(".theme-toggle-label").textContent = isDark ? "Light theme" : "Dark theme";
+      toggle.setAttribute(
+        "aria-label",
+        "Switch to " + (isDark ? "light" : "dark") + " theme",
+      );
+      toggle.querySelector(".theme-toggle-label").textContent = isDark
+        ? "Light theme"
+        : "Dark theme";
     }
 
     applyTheme(theme);
@@ -44,9 +49,10 @@
         window.localStorage.setItem(STORAGE_KEY, theme);
       } catch (error) {
         if (status) {
-          status.textContent = "Theme changed, but your preference could not be saved in this browser.";
+          status.textContent =
+            "Theme changed, but your preference could not be saved in this browser.";
         }
       }
     });
   });
-}());
+})();

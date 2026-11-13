@@ -9,12 +9,20 @@
     }
 
     var records = await response.json();
-    if (!Array.isArray(records) || !records.every(function (record) {
-      return record && typeof record.id === "string" &&
-        typeof record.title === "string" && typeof record.category === "string" &&
-        typeof record.description === "string" && typeof record.recommendation === "string" &&
-        typeof record.impact === "string";
-    })) {
+    if (
+      !Array.isArray(records) ||
+      !records.every(function (record) {
+        return (
+          record &&
+          typeof record.id === "string" &&
+          typeof record.title === "string" &&
+          typeof record.category === "string" &&
+          typeof record.description === "string" &&
+          typeof record.recommendation === "string" &&
+          typeof record.impact === "string"
+        );
+      })
+    ) {
       throw new TypeError("Energy tips contain an invalid record.");
     }
     return records;
@@ -87,16 +95,26 @@
       var query = search.value.trim().toLocaleLowerCase();
       var selectedCategory = category.value;
       var filtered = tips.filter(function (tip) {
-        var searchable = [tip.title, tip.category, tip.description, tip.recommendation, tip.impact]
-          .join(" ").toLocaleLowerCase();
-        return (!query || searchable.includes(query)) &&
-          (!selectedCategory || tip.category === selectedCategory);
+        var searchable = [
+          tip.title,
+          tip.category,
+          tip.description,
+          tip.recommendation,
+          tip.impact,
+        ]
+          .join(" ")
+          .toLocaleLowerCase();
+        return (
+          (!query || searchable.includes(query)) &&
+          (!selectedCategory || tip.category === selectedCategory)
+        );
       });
       list.replaceChildren();
       filtered.forEach(function (tip) {
         list.appendChild(renderTip(tip));
       });
-      count.textContent = filtered.length + (filtered.length === 1 ? " tip" : " tips");
+      count.textContent =
+        filtered.length + (filtered.length === 1 ? " tip" : " tips");
       empty.hidden = filtered.length > 0;
     }
 
@@ -109,27 +127,37 @@
       global.setTimeout(render, 0);
     });
 
-    loadEnergyTips().then(function (records) {
-      tips = records;
-      Array.from(new Set(records.map(function (tip) {
-        return tip.category;
-      }))).sort().forEach(function (label) {
-        var option = document.createElement("option");
-        option.value = label;
-        option.textContent = label;
-        category.appendChild(option);
+    loadEnergyTips()
+      .then(function (records) {
+        tips = records;
+        Array.from(
+          new Set(
+            records.map(function (tip) {
+              return tip.category;
+            }),
+          ),
+        )
+          .sort()
+          .forEach(function (label) {
+            var option = document.createElement("option");
+            option.value = label;
+            option.textContent = label;
+            category.appendChild(option);
+          });
+        render();
+      })
+      .catch(function (loadError) {
+        error.hidden = false;
+        error.textContent =
+          "We couldn't load the tips (" +
+          loadError.message +
+          "). Please check the page is opened through a local or hosted web server, then try again.";
+        count.textContent = "Tips unavailable";
       });
-      render();
-    }).catch(function (loadError) {
-      error.hidden = false;
-      error.textContent = "We couldn't load the tips (" + loadError.message +
-        "). Please check the page is opened through a local or hosted web server, then try again.";
-      count.textContent = "Tips unavailable";
-    });
   }
 
   global.WattWiseEnergyTips = Object.freeze({
-    loadEnergyTips: loadEnergyTips
+    loadEnergyTips: loadEnergyTips,
   });
   document.addEventListener("DOMContentLoaded", initializePage);
-}(window));
+})(window);

@@ -10,13 +10,23 @@
     }
 
     var records = await response.json();
-    if (!Array.isArray(records) || !records.every(function (record) {
-      return record && typeof record.id === "string" &&
-        typeof record.name === "string" && typeof record.category === "string" &&
-        Number.isFinite(record.typicalPowerWatts) && record.typicalPowerWatts >= 0 &&
-        typeof record.powerRange === "string" && typeof record.description === "string" &&
-        typeof record.usageExample === "string" && typeof record.usageNotes === "string";
-    })) {
+    if (
+      !Array.isArray(records) ||
+      !records.every(function (record) {
+        return (
+          record &&
+          typeof record.id === "string" &&
+          typeof record.name === "string" &&
+          typeof record.category === "string" &&
+          Number.isFinite(record.typicalPowerWatts) &&
+          record.typicalPowerWatts >= 0 &&
+          typeof record.powerRange === "string" &&
+          typeof record.description === "string" &&
+          typeof record.usageExample === "string" &&
+          typeof record.usageNotes === "string"
+        );
+      })
+    ) {
       throw new TypeError("Appliance data contains an invalid record.");
     }
 
@@ -24,6 +34,6 @@
   }
 
   global.WattWiseApplianceData = Object.freeze({
-    loadAppliances: loadAppliances
+    loadAppliances: loadAppliances,
   });
-}(window));
+})(window);

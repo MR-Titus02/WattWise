@@ -11,10 +11,15 @@
         appliance.name,
         appliance.category,
         appliance.description,
-        appliance.powerRange
-      ].join(" ").toLocaleLowerCase();
-      return (!query || searchableText.includes(query)) &&
-        (!selectedCategory || appliance.category.toLocaleLowerCase() === selectedCategory);
+        appliance.powerRange,
+      ]
+        .join(" ")
+        .toLocaleLowerCase();
+      return (
+        (!query || searchableText.includes(query)) &&
+        (!selectedCategory ||
+          appliance.category.toLocaleLowerCase() === selectedCategory)
+      );
     });
   }
 
@@ -88,11 +93,13 @@
 
       var calculate = document.createElement("a");
       calculate.className = "button button-secondary";
-      calculate.href = "calculator.html?" + new URLSearchParams({
-        appliance: appliance.id,
-        name: appliance.name,
-        watts: String(appliance.typicalPowerWatts)
-      }).toString();
+      calculate.href =
+        "calculator.html?" +
+        new URLSearchParams({
+          appliance: appliance.id,
+          name: appliance.name,
+          watts: String(appliance.typicalPowerWatts),
+        }).toString();
       calculate.textContent = "Calculate this appliance";
 
       card.append(top, title, description, power, example, note, calculate);
@@ -102,13 +109,14 @@
     function render() {
       var matches = sortAppliances(
         filterAppliances(appliances, search.value, category.value),
-        sort.value
+        sort.value,
       );
       grid.replaceChildren();
       matches.forEach(function (appliance) {
         grid.appendChild(renderCard(appliance));
       });
-      count.textContent = matches.length + (matches.length === 1 ? " appliance" : " appliances");
+      count.textContent =
+        matches.length + (matches.length === 1 ? " appliance" : " appliances");
       empty.hidden = matches.length > 0;
     }
 
@@ -122,30 +130,38 @@
       global.setTimeout(render, 0);
     });
 
-    global.WattWiseApplianceData.loadAppliances().then(function (records) {
-      appliances = records;
-      var categories = Array.from(new Set(records.map(function (record) {
-        return record.category;
-      }))).sort();
-      categories.forEach(function (label) {
-        var option = document.createElement("option");
-        option.value = label;
-        option.textContent = label;
-        category.appendChild(option);
+    global.WattWiseApplianceData.loadAppliances()
+      .then(function (records) {
+        appliances = records;
+        var categories = Array.from(
+          new Set(
+            records.map(function (record) {
+              return record.category;
+            }),
+          ),
+        ).sort();
+        categories.forEach(function (label) {
+          var option = document.createElement("option");
+          option.value = label;
+          option.textContent = label;
+          category.appendChild(option);
+        });
+        render();
+      })
+      .catch(function (loadError) {
+        error.hidden = false;
+        error.textContent =
+          "We couldn't load the appliance examples (" +
+          loadError.message +
+          "). Please check the page is opened through a local or hosted web server, then try again.";
+        count.textContent = "Examples unavailable";
       });
-      render();
-    }).catch(function (loadError) {
-      error.hidden = false;
-      error.textContent = "We couldn't load the appliance examples (" + loadError.message +
-        "). Please check the page is opened through a local or hosted web server, then try again.";
-      count.textContent = "Examples unavailable";
-    });
   }
 
   global.WattWiseApplianceFilter = Object.freeze({
     filterAppliances: filterAppliances,
-    sortAppliances: sortAppliances
+    sortAppliances: sortAppliances,
   });
 
   document.addEventListener("DOMContentLoaded", initializePage);
-}(window));
+})(window);
